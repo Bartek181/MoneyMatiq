@@ -1,12 +1,12 @@
-
 /* ========== Ogólne ustawienia ========== */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: clamp(14px, 2.5vw, 18px);
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #4b3b66, #6a4a7f);
-  color: #e0d9f2;
+  /* Tło dwukolorowe jasne */
+  background: linear-gradient(to bottom, #f0f4f8, #d0e2ff);
+  color: #2a2a72;
   min-height: 100vh;
 }
 
@@ -16,32 +16,29 @@ body {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #2e244bdd;
-  box-shadow: 0 4px 12px rgba(100, 80, 150, 0.4);
+  /* Tło kontenera jasne, gradient delikatny */
+  background: linear-gradient(135deg, #a2d5f2cc, #6799cccc);
+  box-shadow: 0 4px 12px rgba(50, 80, 140, 0.35);
   border-radius: 12px;
   box-sizing: border-box;
-  color: #e0d9f2;
+  color: #1a2a4a;
 }
+
 /* ========== Nagłówki ========== */
+h1, h2, h3 {
+  color: #1a2a4a;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 h1 {
   font-size: clamp(20px, 4vw, 32px);
-  color: #d4b0ff;
-  margin-top: 20px;
-  margin-bottom: 10px;
 }
-
 h2 {
   font-size: clamp(18px, 3vw, 28px);
-  color: #d4b0ff;
-  margin-top: 20px;
-  margin-bottom: 10px;
 }
-
 h3 {
   font-size: clamp(16px, 2.5vw, 24px);
-  color: #d4b0ff;
-  margin-top: 20px;
-  margin-bottom: 10px;
 }
 
 /* Przycisk ogólny */
@@ -49,7 +46,7 @@ button {
   font-size: clamp(14px, 2.5vw, 18px);
   margin: 5px 0;
   padding: 10px 16px;
-  background-color: #855fad;
+  background-color: #3b5998; /* intensywny niebieski */
   color: white;
   border: none;
   border-radius: 6px;
@@ -59,7 +56,7 @@ button {
 }
 
 button:hover {
-  background-color: #6e4a91;
+  background-color: #2d4373;
 }
 
 /* Ikona menu (☰) */
@@ -68,7 +65,7 @@ button:hover {
   top: 10px;
   left: 10px;
   font-size: 24px;
-  background-color: #855fad;
+  background-color: #3b5998;
   color: white;
   border-radius: 6px;
   padding: 6px 12px;
@@ -83,10 +80,10 @@ button:hover {
   position: fixed;
   top: 50px;
   left: 10px;
-  background-color: #3c315aee;
-  border: 1px solid #6e4a91;
+  background-color: #34609edd;
+  border: 1px solid #2a3e66;
   padding: 10px;
-  box-shadow: 0px 4px 10px rgba(80, 70, 110, 0.3);
+  box-shadow: 0px 4px 10px rgba(40, 50, 90, 0.3);
   border-radius: 6px;
   z-index: 999;
   min-width: 160px;
@@ -95,6 +92,7 @@ button:hover {
   gap: 10px;
 }
 
+/* Ukrywanie */
 .hidden {
   display: none !important;
 }
@@ -104,24 +102,24 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  background-color: #3c315a;
+  background-color: #3c548f;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(50, 40, 80, 0.3);
-  color: #e0d9f2;
+  box-shadow: 0 2px 5px rgba(40, 50, 80, 0.3);
+  color: #e0e7f6;
 }
 
 th {
-  background-color: #5a4a86;
-  color: #d4b0ff;
+  background-color: #2a3e66;
+  color: #d0d8ff;
   font-weight: bold;
 }
 
 th, td {
-  border: 1px solid #6e4a91;
+  border: 1px solid #2d3d6b;
   padding: 10px;
   text-align: left;
-  color: #e0d9f2;
+  color: #e0e7f6;
 }
 
 /* Formularze */
@@ -132,10 +130,10 @@ select {
   width: 100%;
   padding: 6px 10px;
   box-sizing: border-box;
-  border: 1px solid #6e4a91;
+  border: 1px solid #2a3e66;
   border-radius: 4px;
-  background-color: #574f77;
-  color: #e0d9f2;
+  background-color: #4a5e8c;
+  color: #e0e7f6;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -146,25 +144,25 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Podsumowanie wykresu */
 #podsumowanie-wykres {
-  background-color: #3c315a;
+  background-color: #2a3e66;
   padding: 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(80, 70, 110, 0.3);
+  box-shadow: 0 3px 6px rgba(40, 50, 90, 0.3);
   margin-top: 20px;
   line-height: 1.6;
-  color: #e0d9f2;
+  color: #e0e7f6;
 }
 
 #podsumowanie-wykres span {
   font-weight: bold;
-  color: #d4b0ff;
+  color: #aec6ff;
 }
 
 /* Pasek postępu */
 .pasek-postepu {
   width: 100%;
   height: 25px;
-  background-color: #5a4a86;
+  background-color: #2a3e66;
   border-radius: 12px;
   margin: 10px 0;
   overflow: hidden;
@@ -172,20 +170,20 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .postep {
   height: 100%;
-  background-color: #855fad;
+  background-color: #3b5998;
   width: 0%;
   transition: width 0.5s ease-in-out;
 }
 
 /* Sekcja powitalna */
 .intro-box {
-  background: #574f77;
-  border-left: 5px solid #6e4a91;
+  background: #4a5e8c;
+  border-left: 5px solid #2a3e66;
   padding: 1em;
   margin-top: 1em;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(80, 70, 110, 0.3);
-  color: #e0d9f2;
+  box-shadow: 0 2px 6px rgba(40, 50, 90, 0.3);
+  color: #e0e7f6;
 }
 
 .intro-box ul {
@@ -204,7 +202,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: clamp(14px, 2.5vw, 18px);
   margin-top: 2em;
   font-style: italic;
-  color: #bfb6d6;
+  color: #b0b7d8;
   text-align: center;
 }
 
@@ -241,11 +239,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
   tr {
     margin-bottom: 15px;
-    background-color: #3c315a;
-    border: 1px solid #6e4a91;
+    background-color: #3c548f;
+    border: 1px solid #2d3d6b;
     border-radius: 8px;
     padding: 10px;
-    color: #e0d9f2;
+    color: #e0e7f6;
   }
 
   td {
@@ -253,8 +251,8 @@ input[type="number"]::-webkit-outer-spin-button {
     position: relative;
     text-align: left;
     border: none;
-    border-bottom: 1px solid #574f77;
-    color: #e0d9f2;
+    border-bottom: 1px solid #4a5e8c;
+    color: #e0e7f6;
   }
 
   td::before {
@@ -265,7 +263,7 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-right: 10px;
     white-space: nowrap;
     font-weight: bold;
-    color: #d4b0ff;
+    color: #aec6ff;
     content: attr(data-label);
   }
 }
@@ -302,9 +300,9 @@ input[type="number"]::-webkit-outer-spin-button {
 #menu {
   width: 200px;
   min-height: 100vh;
-  background-color: #5a4a86;
+  background-color: #2a3e66;
   padding: 20px 10px;
-  box-shadow: 2px 0 6px rgba(80, 70, 110, 0.4);
+  box-shadow: 2px 0 6px rgba(40, 50, 90, 0.4);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -319,7 +317,7 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 10px;
   z-index: 1000;
   font-size: 20px;
-  background-color: #855fad;
+  background-color: #3b5998;
   color: white;
   border: none;
   border-radius: 6px;
@@ -342,21 +340,22 @@ input[type="number"]::-webkit-outer-spin-button {
     min-height: auto;
     position: static;
     box-shadow: none;
-    background-color: #2e244bee;
+    background-color: #1f2a4dcc;
     flex-direction: column;
     padding: 10px;
     gap: 10px;
-    border-bottom: 1px solid #6e4a91;
+    border-bottom: 1px solid #2d3d6b;
   }
 
   #menu.show {
     display: flex;
   }
 }
+
 /* === DODANE: placeholdery i wyrównanie pól === */
 input[type="text"]::placeholder,
 input[type="number"]::placeholder {
-  color: #b9a9d9;
+  color: #a3b0d4;
   font-style: italic;
 }
 
@@ -364,6 +363,7 @@ input[type="text"],
 input[type="number"] {
   text-align: left; /* Wyrównanie tekstu do lewej */
 }
+
 /* === Formularze dynamiczne: pełna szerokość i wyrównanie === */
 .dynamic-form {
   width: 100%;
@@ -373,17 +373,19 @@ input[type="number"] {
   flex-direction: column;
   gap: 10px;
 }
+
 /* === Styl dla opisów sekcji === */
 .sekcja-opis {
   font-size: clamp(14px, 2.3vw, 17px);
-  color: #bfb6d6;
-  background-color: #4b3b66;
-  border-left: 4px solid #855fad;
+  color: #9eaad1;
+  background-color: #394c7c;
+  border-left: 4px solid #3b5998;
   padding: 10px 16px;
   margin: 10px 0 20px;
   border-radius: 8px;
   line-height: 1.6;
 }
+
 @media (max-width: 600px) {
   /* Wyrównaj inputy do lewej i pełna szerokość */
   input[type="text"],
@@ -395,134 +397,138 @@ input[type="number"] {
     margin-right: 0 !important;
   }
 }
-/* Tryb jasny - domyślny */
-body {
-  background-color: #3c315a;
-  color: #e0d9f2;
-}
-/* Tryb ciemny - bardzo ciemne tło */
+/* --- TRYB CIEMNY poprawiony dla lepszej czytelności --- */
 body.dark-mode {
-  background-color: #121212; /* bardzo ciemne */
-  color: #a3f7cc; /* mięta */
+  background: linear-gradient(to bottom, #2c3f38, #1e2e2a);
+  color: #b0f0d5; /* jaśniejsza mięta */
 }
 
-/* Kontenery, menu itp. */
 .app-container.dark-mode,
 .container.dark-mode,
 nav#menu.dark-mode {
-  background-color: #1e1e1e; /* ciemnoszare, ale jaśniejsze od body */
-  color: #a3f7cc;
-  border-color: #444;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #163528dd, #2a5442cc);
+  color: #b0f0d5;
+  border-color: #4aa673;
+  box-shadow: 0 4px 12px rgba(20, 60, 45, 0.75);
 }
-
+/* Tryb ciemny - jaśniejszy kolor nagłówków */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #80e1b8; /* jasny miętowy, dobrze kontrastujący na ciemnym tle */
+}
 /* Przyciski ogólne w trybie ciemnym */
 button.dark-mode {
-  background-color: #2f6f58; /* ciemna mięta */
-  color: #a3f7cc;
-  border: 1px solid #5bd1a0;
+  background-color: #3ba36b; /* intensywna mięta */
+  color: #e3fff5;
+  border: 1px solid #70d9a6;
   transition: background-color 0.3s ease;
 }
 
 button.dark-mode:hover {
-  background-color: #25794d;
+  background-color: #2b7a4b;
+  color: #d8ffe8;
 }
 
-/* Menu boczne */
+/* Menu boczne w trybie ciemnym */
 .dark-mode #menu {
-  background-color: #1e1e1e;
-  color: #a3f7cc;
-  border: 1px solid #444;
+  background: linear-gradient(180deg, #2a5442, #163528);
+  color: #b0f0d5;
+  border: 1px solid #4aa673;
+  box-shadow: 0 0 10px #3bb67d88;
 }
 
-/* Tabele i pola formularzy */
+/* Tabele i pola formularzy w trybie ciemnym */
 .dark-mode table {
-  background-color: #1e1e1e;
-  color: #a3f7cc;
+  background: linear-gradient(135deg, #1b3b2fdd, #2a5442cc);
+  color: #b0f0d5;
   border-collapse: collapse;
+  box-shadow: 0 0 8px #4ac88d88;
 }
 
 .dark-mode th {
-  background-color: #2f6f58;
-  color: #d0f0e0;
+  background-color: #3ba36b;
+  color: #e3fff5;
 }
 
 .dark-mode td,
 .dark-mode th {
-  border: 1px solid #444;
+  border: 1px solid #4aa673;
 }
 
 .dark-mode input[type="text"],
 .dark-mode input[type="number"],
 .dark-mode select {
-  background-color: #121212;
-  color: #a3f7cc;
-  border: 1px solid #444;
+  background-color: #121f1b;
+  color: #b0f0d5;
+  border: 1px solid #4aa673;
 }
 
 .dark-mode input::placeholder {
-  color: #7fd3b7;
-  opacity: 0.7;
+  color: #a2d6bb;
+  opacity: 0.8;
 }
 
-/* Pasek postępu i inne elementy */
+/* Pasek postępu i inne elementy w trybie ciemnym */
 .dark-mode .pasek-postepu {
-  background-color: #222;
+  background-color: #204d38;
+  box-shadow: inset 0 0 6px #3bb67d88;
 }
 
 .dark-mode .postep {
-  background-color: #a3f7cc;
-  color: #121212;
+  background-color: #70d9a6;
+  color: #121f1b;
 }
 
-/* --- Specjalne style dla dwóch ostatnich zakładek: Cele i Notatki --- */
-#menu button:nth-last-child(2),
-#menu button:last-child {
-  background-color: #ffbf00; /* bursztynowy */
-  color: #3b2f00; /* ciemny brąz */
-  font-weight: 700;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-#menu button:nth-last-child(2):hover,
-#menu button:last-child:hover,
-#menu button:nth-last-child(2).active,
-#menu button:last-child.active {
-  background-color: #cc9900; /* ciemniejszy bursztyn */
-  color: #3b2f00;
-}
-
-/* Bursztynowe kolory w trybie ciemnym też */
+/* Specjalne style dla dwóch ostatnich zakładek: Cele i Notatki */
 body.dark-mode #menu button:nth-last-child(2),
 body.dark-mode #menu button:last-child {
-  background-color: #ffbf00;
+  background-color: #ffec70; /* jaśniejszy bursztyn */
   color: #3b2f00;
+  box-shadow: 0 0 6px #ffec70bb;
 }
 
 body.dark-mode #menu button:nth-last-child(2):hover,
 body.dark-mode #menu button:last-child:hover,
 body.dark-mode #menu button:nth-last-child(2).active,
 body.dark-mode #menu button:last-child.active {
-  background-color: #cc9900;
+  background-color: #e6d23c; /* mocniejszy bursztyn */
   color: #3b2f00;
+  box-shadow: 0 0 8px #e6d23cdd;
 }
 
-/* Responsywne tabele w trybie ciemnym */
-@media (max-width: 600px) {
-  .dark-mode tr {
-    background-color: #1e1e1e;
-    border: 1px solid #444;
-  }
-
-  .dark-mode td::before {
-    color: #2f6f58;
-  }
+/* Zieleń dla "Cele finansowe" */
+body.dark-mode #menu button.menu-goals {
+  background-color: #43c27d;
+  color: #121f1b;
+  box-shadow: 0 0 8px #43c27ddd;
 }
 
-/* --- Zielona zakładka Cele finansowe w menu --- */
+body.dark-mode #menu button.menu-goals:hover,
+body.dark-mode #menu button.menu-goals.active {
+  background-color: #2fa761;
+  color: #121f1b;
+  box-shadow: 0 0 10px #2fa761dd;
+}
+
+/* Pasek postępu w tabeli w trybie ciemnym */
+#celeTable .pasek-postepu {
+  background-color: #204d38;
+}
+
+#celeTable .postep {
+  background-color: #70d9a6;
+}
+
+/* Tekst w textarea notatek */
+#notatki textarea {
+  background-color: #121f1b;
+  color: #b0f0d5;
+  border: 1px solid #4aa673;
+}
+/* --- Zieleń dla "Cele finansowe" --- */
 #menu button.menu-goals {
-  background-color: #27ae60;   /* ładna zieleń */
+  background-color: #388e3c; /* mocna zieleń */
   color: white;
   font-weight: 700;
   border-radius: 6px;
@@ -531,20 +537,8 @@ body.dark-mode #menu button:last-child.active {
 
 #menu button.menu-goals:hover,
 #menu button.menu-goals.active {
-  background-color: #1e8449; /* ciemniejszy odcień zieleni */
+  background-color: #2e7031; /* ciemniejszy odcień zieleni */
   color: white;
-}
-
-/* Tryb ciemny dla zielonej zakładki */
-body.dark-mode #menu button.menu-goals {
-  background-color: #2ecc71;
-  color: #121212;
-}
-
-body.dark-mode #menu button.menu-goals:hover,
-body.dark-mode #menu button.menu-goals.active {
-  background-color: #27ae60;
-  color: #121212;
 }
 /* === Cele finansowe: kolory priorytetów === */
 .priorytet-wysoki {
@@ -563,20 +557,20 @@ body.dark-mode #menu button.menu-goals.active {
 #celeTable .pasek-postepu {
   height: 20px;
   border-radius: 10px;
-  background-color: #5a4a86;
+  background-color: #2a3e66;
   overflow: hidden;
   margin-top: 5px;
 }
 
 #celeTable .postep {
   height: 100%;
-  background-color: #9fbcf0; /* jasny niebieski pasek */
+  background-color: #a2c4f7; /* jasny niebieski pasek */
   transition: width 0.4s ease-in-out;
 }
 
 /* Przycisk menu "Notatki" - zielony */
 .menu-goals[onclick*="notatki"] {
-  background-color: #27ae60;
+  background-color: #388e3c;
   color: white;
 }
 
@@ -586,12 +580,13 @@ body.dark-mode #menu button.menu-goals.active {
   font-size: clamp(14px, 2.5vw, 18px);
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #6e4a91;
+  border: 1px solid #2a3e66;
   resize: vertical;
   box-sizing: border-box;
   min-height: 150px;
   margin-bottom: 10px;
 }
+
 @media (max-width: 768px) {
   #menu {
     display: none !important;
@@ -600,4 +595,14 @@ body.dark-mode #menu button.menu-goals.active {
     display: flex !important;
     flex-direction: column;
   }
+}
+
+/* Minimalna wysokość i wyśrodkowanie treści w zakładkach */
+.section {
+  min-height: calc(100vh - 100px); /* 100vh minus np. wysokość nagłówka/menu */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }

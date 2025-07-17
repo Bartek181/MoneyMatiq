@@ -497,6 +497,17 @@ function wczytajDane(id, dane) {
     aktualizujAnalizeWydatkow();
   }
 }
+function zaladujKategoriePlanowane(daneWydatkiPlanowane) {
+  kategoriePlanowane = [];
+  if (!daneWydatkiPlanowane) return;
+
+  daneWydatkiPlanowane.forEach(wiersz => {
+    const kategoria = (wiersz[0] || "").trim().toLowerCase();
+    if (kategoria && !kategoriePlanowane.includes(kategoria)) {
+      kategoriePlanowane.push(kategoria);
+    }
+  });
+}
 function zaladujDane() {
   const dane = JSON.parse(localStorage.getItem("finanse"));
   if (!dane) return;
@@ -504,6 +515,7 @@ function zaladujDane() {
   wczytajDane("zobowiazania-table", dane.zobowiazania);
   wczytajDane("przychody-table", dane.przychody);
   wczytajDane("wydatki-planowane-table", dane.wydatkiPlanowane);
+  zaladujKategoriePlanowane(dane.wydatkiPlanowane);
   wczytajDane("wydatki-zrealizowane-table", dane.wydatkiZrealizowane);
 
   if (dane.fundusz) {
@@ -519,6 +531,7 @@ function zaladujDane() {
   aktualizujPasekFundusz();
   aktualizujPoduszke();
   aktualizujPlanSplat();
+  aktualizujAnalizeWydatkow();
 
   // Nie dodawaj już tu aktualizacji kategorii ani analizy!
 }
