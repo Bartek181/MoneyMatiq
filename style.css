@@ -46,7 +46,7 @@ button {
   font-size: clamp(14px, 2.5vw, 18px);
   margin: 5px 0;
   padding: 10px 16px;
-  background-color: #3b5998; /* intensywny niebieski */
+  background-color: #1971bb7a; /* intensywny niebieski */
   color: white;
   border: none;
   border-radius: 6px;
@@ -542,15 +542,15 @@ body.dark-mode #menu button.menu-goals.active {
 }
 /* === Cele finansowe: kolory priorytetów === */
 .priorytet-wysoki {
-  background-color: #ffebee; /* bardzo jasny czerwony */
+  background-color: #ec5168; /* bardzo jasny czerwony */
 }
 
 .priorytet-sredni {
-  background-color: #fff3e0; /* bardzo jasny pomarańczowy */
+  background-color: #cd963e; /* bardzo jasny pomarańczowy */
 }
 
 .priorytet-niski {
-  background-color: #e8f5e9; /* bardzo jasny zielony */
+  background-color: #3ff74e; /* bardzo jasny zielony */
 }
 
 /* === Dostosowanie paska w tabeli === */
