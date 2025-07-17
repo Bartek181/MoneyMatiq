@@ -1,0 +1,603 @@
+
+/* ========== Ogólne ustawienia ========== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: clamp(14px, 2.5vw, 18px);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #4b3b66, #6a4a7f);
+  color: #e0d9f2;
+  min-height: 100vh;
+}
+
+/* Kontener ze stałą szerokością */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #2e244bdd;
+  box-shadow: 0 4px 12px rgba(100, 80, 150, 0.4);
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #e0d9f2;
+}
+/* ========== Nagłówki ========== */
+h1 {
+  font-size: clamp(20px, 4vw, 32px);
+  color: #d4b0ff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: clamp(18px, 3vw, 28px);
+  color: #d4b0ff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: clamp(16px, 2.5vw, 24px);
+  color: #d4b0ff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Przycisk ogólny */
+button {
+  font-size: clamp(14px, 2.5vw, 18px);
+  margin: 5px 0;
+  padding: 10px 16px;
+  background-color: #855fad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #6e4a91;
+}
+
+/* Ikona menu (☰) */
+#menu-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  background-color: #855fad;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu boczne */
+#menu {
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  background-color: #3c315aee;
+  border: 1px solid #6e4a91;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(80, 70, 110, 0.3);
+  border-radius: 6px;
+  z-index: 999;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Styl tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #3c315a;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(50, 40, 80, 0.3);
+  color: #e0d9f2;
+}
+
+th {
+  background-color: #5a4a86;
+  color: #d4b0ff;
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid #6e4a91;
+  padding: 10px;
+  text-align: left;
+  color: #e0d9f2;
+}
+
+/* Formularze */
+input[type="text"],
+input[type="number"],
+select {
+  font-size: clamp(14px, 2.5vw, 18px);
+  width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border: 1px solid #6e4a91;
+  border-radius: 4px;
+  background-color: #574f77;
+  color: #e0d9f2;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Podsumowanie wykresu */
+#podsumowanie-wykres {
+  background-color: #3c315a;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(80, 70, 110, 0.3);
+  margin-top: 20px;
+  line-height: 1.6;
+  color: #e0d9f2;
+}
+
+#podsumowanie-wykres span {
+  font-weight: bold;
+  color: #d4b0ff;
+}
+
+/* Pasek postępu */
+.pasek-postepu {
+  width: 100%;
+  height: 25px;
+  background-color: #5a4a86;
+  border-radius: 12px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.postep {
+  height: 100%;
+  background-color: #855fad;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Sekcja powitalna */
+.intro-box {
+  background: #574f77;
+  border-left: 5px solid #6e4a91;
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(80, 70, 110, 0.3);
+  color: #e0d9f2;
+}
+
+.intro-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.intro-box li {
+  font-size: clamp(14px, 2.5vw, 18px);
+  margin: 0.5em 0;
+  line-height: 1.4;
+}
+
+.motivation {
+  font-size: clamp(14px, 2.5vw, 18px);
+  margin-top: 2em;
+  font-style: italic;
+  color: #bfb6d6;
+  text-align: center;
+}
+
+/* Styl responsywny */
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  #menu {
+    top: 40px;
+    left: 5px;
+    min-width: 140px;
+  }
+
+  #menu-button {
+    font-size: 20px;
+    padding: 4px 10px;
+  }
+
+  th, td {
+    padding: 6px;
+  }
+
+  /* Styl kart zamiast tabeli */
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background-color: #3c315a;
+    border: 1px solid #6e4a91;
+    border-radius: 8px;
+    padding: 10px;
+    color: #e0d9f2;
+  }
+
+  td {
+    padding-left: 0%;
+    position: relative;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #574f77;
+    color: #e0d9f2;
+  }
+
+  td::before {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #d4b0ff;
+    content: attr(data-label);
+  }
+}
+
+/* Menu rozwijane mobilne */
+#menu.hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #menu {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  #menu-button {
+    display: none;
+  }
+}
+
+/* Layout kontenera: menu z lewej + zawartość po prawej */
+.app-container {
+  display: flex;
+}
+
+/* Menu boczne - domyślnie widoczne na desktopie */
+#menu {
+  width: 200px;
+  min-height: 100vh;
+  background-color: #5a4a86;
+  padding: 20px 10px;
+  box-shadow: 2px 0 6px rgba(80, 70, 110, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+/* Przycisk menu widoczny tylko na telefonie */
+#menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  font-size: 20px;
+  background-color: #855fad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+
+  #menu {
+    display: none;
+    width: 100%;
+    min-height: auto;
+    position: static;
+    box-shadow: none;
+    background-color: #2e244bee;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    border-bottom: 1px solid #6e4a91;
+  }
+
+  #menu.show {
+    display: flex;
+  }
+}
+/* === DODANE: placeholdery i wyrównanie pól === */
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #b9a9d9;
+  font-style: italic;
+}
+
+input[type="text"],
+input[type="number"] {
+  text-align: left; /* Wyrównanie tekstu do lewej */
+}
+/* === Formularze dynamiczne: pełna szerokość i wyrównanie === */
+.dynamic-form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* === Styl dla opisów sekcji === */
+.sekcja-opis {
+  font-size: clamp(14px, 2.3vw, 17px);
+  color: #bfb6d6;
+  background-color: #4b3b66;
+  border-left: 4px solid #855fad;
+  padding: 10px 16px;
+  margin: 10px 0 20px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  /* Wyrównaj inputy do lewej i pełna szerokość */
+  input[type="text"],
+  input[type="number"],
+  select {
+    text-align: left !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+/* Tryb jasny - domyślny */
+body {
+  background-color: #3c315a;
+  color: #e0d9f2;
+}
+/* Tryb ciemny - bardzo ciemne tło */
+body.dark-mode {
+  background-color: #121212; /* bardzo ciemne */
+  color: #a3f7cc; /* mięta */
+}
+
+/* Kontenery, menu itp. */
+.app-container.dark-mode,
+.container.dark-mode,
+nav#menu.dark-mode {
+  background-color: #1e1e1e; /* ciemnoszare, ale jaśniejsze od body */
+  color: #a3f7cc;
+  border-color: #444;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Przyciski ogólne w trybie ciemnym */
+button.dark-mode {
+  background-color: #2f6f58; /* ciemna mięta */
+  color: #a3f7cc;
+  border: 1px solid #5bd1a0;
+  transition: background-color 0.3s ease;
+}
+
+button.dark-mode:hover {
+  background-color: #25794d;
+}
+
+/* Menu boczne */
+.dark-mode #menu {
+  background-color: #1e1e1e;
+  color: #a3f7cc;
+  border: 1px solid #444;
+}
+
+/* Tabele i pola formularzy */
+.dark-mode table {
+  background-color: #1e1e1e;
+  color: #a3f7cc;
+  border-collapse: collapse;
+}
+
+.dark-mode th {
+  background-color: #2f6f58;
+  color: #d0f0e0;
+}
+
+.dark-mode td,
+.dark-mode th {
+  border: 1px solid #444;
+}
+
+.dark-mode input[type="text"],
+.dark-mode input[type="number"],
+.dark-mode select {
+  background-color: #121212;
+  color: #a3f7cc;
+  border: 1px solid #444;
+}
+
+.dark-mode input::placeholder {
+  color: #7fd3b7;
+  opacity: 0.7;
+}
+
+/* Pasek postępu i inne elementy */
+.dark-mode .pasek-postepu {
+  background-color: #222;
+}
+
+.dark-mode .postep {
+  background-color: #a3f7cc;
+  color: #121212;
+}
+
+/* --- Specjalne style dla dwóch ostatnich zakładek: Cele i Notatki --- */
+#menu button:nth-last-child(2),
+#menu button:last-child {
+  background-color: #ffbf00; /* bursztynowy */
+  color: #3b2f00; /* ciemny brąz */
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#menu button:nth-last-child(2):hover,
+#menu button:last-child:hover,
+#menu button:nth-last-child(2).active,
+#menu button:last-child.active {
+  background-color: #cc9900; /* ciemniejszy bursztyn */
+  color: #3b2f00;
+}
+
+/* Bursztynowe kolory w trybie ciemnym też */
+body.dark-mode #menu button:nth-last-child(2),
+body.dark-mode #menu button:last-child {
+  background-color: #ffbf00;
+  color: #3b2f00;
+}
+
+body.dark-mode #menu button:nth-last-child(2):hover,
+body.dark-mode #menu button:last-child:hover,
+body.dark-mode #menu button:nth-last-child(2).active,
+body.dark-mode #menu button:last-child.active {
+  background-color: #cc9900;
+  color: #3b2f00;
+}
+
+/* Responsywne tabele w trybie ciemnym */
+@media (max-width: 600px) {
+  .dark-mode tr {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+  }
+
+  .dark-mode td::before {
+    color: #2f6f58;
+  }
+}
+
+/* --- Zielona zakładka Cele finansowe w menu --- */
+#menu button.menu-goals {
+  background-color: #27ae60;   /* ładna zieleń */
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#menu button.menu-goals:hover,
+#menu button.menu-goals.active {
+  background-color: #1e8449; /* ciemniejszy odcień zieleni */
+  color: white;
+}
+
+/* Tryb ciemny dla zielonej zakładki */
+body.dark-mode #menu button.menu-goals {
+  background-color: #2ecc71;
+  color: #121212;
+}
+
+body.dark-mode #menu button.menu-goals:hover,
+body.dark-mode #menu button.menu-goals.active {
+  background-color: #27ae60;
+  color: #121212;
+}
+/* === Cele finansowe: kolory priorytetów === */
+.priorytet-wysoki {
+  background-color: #ffebee; /* bardzo jasny czerwony */
+}
+
+.priorytet-sredni {
+  background-color: #fff3e0; /* bardzo jasny pomarańczowy */
+}
+
+.priorytet-niski {
+  background-color: #e8f5e9; /* bardzo jasny zielony */
+}
+
+/* === Dostosowanie paska w tabeli === */
+#celeTable .pasek-postepu {
+  height: 20px;
+  border-radius: 10px;
+  background-color: #5a4a86;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+#celeTable .postep {
+  height: 100%;
+  background-color: #9fbcf0; /* jasny niebieski pasek */
+  transition: width 0.4s ease-in-out;
+}
+
+/* Przycisk menu "Notatki" - zielony */
+.menu-goals[onclick*="notatki"] {
+  background-color: #27ae60;
+  color: white;
+}
+
+/* Pasek postępu i inne style możesz pominąć, tutaj prosty textarea */
+#notatki textarea {
+  width: 100%;
+  font-size: clamp(14px, 2.5vw, 18px);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #6e4a91;
+  resize: vertical;
+  box-sizing: border-box;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  #menu {
+    display: none !important;
+  }
+  #menu.show {
+    display: flex !important;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplikacja finansowa</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+
+  <div class="app-container">
+    <!-- Menu boczne -->
+    <nav id="menu">
+      <button onclick="showSection('strona-glowna')">Strona główna</button>
+      <button onclick="showSection('wartosc-netto')">Wartość netto</button>
+      <button onclick="showSection('budzet-domowy')">Budżet domowy</button>
+      <button onclick="showSection('fundusz-awaryjny')">Fundusz awaryjny</button>
+      <button onclick="showSection('plan-splat')">Plan spłaty długów</button>
+      <button onclick="showSection('poduszka')">Poduszka bezpieczeństwa</button>
+      <button class="menu-goals" onclick="showSection('cele-finansowe')">🎯 Cele finansowe</button>
+      <button class="menu-goals" onclick="showSection('notatki')">📝 Notatki</button>
+    </nav>
+
+    <!-- Główna treść -->
+    <div class="container">
+
+      <!-- Strona główna -->
+      <div id="strona-glowna" class="section">
+        <img src="logo.png" alt="Moje Logo" width="100" />
+        <h1>Twoje centrum finansowe</h1>
+        <label>
+  <input type="checkbox" id="darkModeToggle" />
+  Tryb ciemny
+</label>
+
+        <div style="margin: 10px 0;">
+          <label for="currencySelector"><strong>Waluta:</strong></label>
+          <select id="currencySelector">
+            <option value="zł">PLN (zł)</option>
+            <option value="€">EUR (€)</option>
+            <option value="$">USD ($)</option>
+            <option value="£">GBP (£)</option>
+          </select>
+        </div>
+
+        <p>Witaj w swojej osobistej aplikacji do zarządzania finansami!</p>
+
+        <div class="intro-box">
+          <h3>Co możesz tutaj zrobić?</h3>
+          <ul>
+            <li>💼 Oblicz <strong>wartość netto</strong> i monitoruj zmiany majątku</li>
+            <li>📊 Zarządzaj <strong>budżetem domowym</strong> – przychody, wydatki, ruchy</li>
+            <li>🛟 Zbuduj <strong>fundusz awaryjny</strong> na nieprzewidziane sytuacje</li>
+            <li>📉 Stwórz <strong>plan spłaty długów</strong> i nadpłacaj skutecznie</li>
+            <li>🧘‍♀️ Oblicz <strong>poduszkę bezpieczeństwa</strong> – finansowy bufor spokoju</li>
+          </ul>
+        </div>
+
+        <div class="motivation">
+          <p><strong>Pamiętaj:</strong> Małe, regularne działania budują wielkie zmiany 💡</p>
+        </div>
+      </div>
+
+      <!-- Wartość netto -->
+      <div id="wartosc-netto" class="hidden section">
+        <h2>Wartość netto</h2>
+        <p class="sekcja-opis">
+          To różnica między tym, co masz, a tym, co jesteś winien. Pokazuje, gdzie jesteś teraz na swojej finansowej drodze. Porównując wartość netto z dzisiaj do tej sprzed kilku miesięcy, zobaczysz, czy idziesz w dobrym kierunku.<br />
+          Nie spiesz się — każdy mały krok to postęp, który przybliża Cię do stabilności.
+        </p>
+
+        <h3>Majątek</h3>
+        <table id="majatek-table">
+          <thead>
+            <tr>
+              <th>Składnik majątku</th>
+              <th>Wartość (<span class="currency-symbol">zł</span>)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="addMajatekRow()">Dodaj składnik</button>
+        <p>Łączna wartość majątku: <span id="suma-majatku">0 <span class="currency-symbol">zł</span></span></p>
+
+        <h3>Zobowiązania</h3>
+        <table id="zobowiazania-table">
+          <thead>
+            <tr>
+              <th>Zobowiązanie</th>
+              <th>Oprocentowanie (%)</th>
+              <th>Kwota (<span class="currency-symbol">zł</span>)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="addZobowiazanieRow()">Dodaj zobowiązanie</button>
+        <p>Łączna wartość zobowiązań: <span id="suma-zobowiazan">0 <span class="currency-symbol">zł</span></span></p>
+
+        <h3>Wartość netto: <span id="wartosc-netto-wynik">0 <span class="currency-symbol">zł</span></span></h3>
+        <p>Pierwsza zapisana wartość netto: <span id="pierwsza-wartosc-netto">-</span></p>
+        <p><span id="roznica-wartosci-netto"></span></p>
+      </div>
+
+      <!-- Budżet domowy -->
+      <div id="budzet-domowy" class="hidden section">
+        <h2>Budżet domowy</h2>
+        <p class="sekcja-opis">
+          Tu zaplanujesz swoje wpływy i wydatki. Dzięki temu łatwiej będzie Ci ogarnąć, na co wydajesz pieniądze. Dodatkowo, im bardziej szczegółowo wpisujesz swoje wydatki zrealizowane, tym łatwiej pod koniec miesiąca znajdziesz „wydatki na zachcianki” — te, z których można zrezygnować, aby oszczędzać więcej.<br />
+          Regularnie sprawdzaj swoje zapiski i staraj się wycinać zbędne wydatki.<br />
+          Wiesz, co? To normalne, że na początku jest trudno — ważne, że zaczynasz działać!
+        </p>
+        <!-- 🔧 Ustawienia budżetu -->
+<div class="ustawienia-budzetu sekcja-opis" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px; border-radius: 8px;">
+  <h3>🔧 Ustawienia budżetu</h3>
+
+  <label for="budzet-start-day">Dzień rozpoczęcia budżetu (1–31):</label>
+  <input type="number" id="budzet-start-day" min="1" max="31" value="1" onchange="zapiszDzienBudzetu()" />
+
+  <br><br>
+
+  <label for="budzet-miesiac-wybor">Wybierz miesiąc budżetu:</label>
+  <select id="budzet-miesiac-wybor" onchange="zmienMiesiacBudzetu()"></select>
+  <button id="btnWroc" style="display:none;" onclick="powrotDoAktualnegoBudzetu()">
+  Wróć do aktualnego budżetu
+</button>
+
+<button onclick="wczytajBudzetHistoryczny()">Wczytaj budżet z historii</button>
+<button id="btn-wroc-do-aktualnego" style="display:none;">Powrót do aktualnego budżetu</button>
+<button onclick="zapiszZmianyWBudzecieHistorycznym()">Zapisz zmiany</button>
+
+<label style="display:block; margin-top: 10px;">
+  <input type="checkbox" id="toggleEditHistory">
+  Tryb edycji danych historycznych
+</label>
+
+  <p><em>Uwaga: Zakres dat budżetu zostanie automatycznie obliczony, np. 10 czerwca – 9 lipca.</em></p>
+</div>
+
+        <h3>Przychody</h3>
+        <table id="przychody-table">
+          <thead>
+            <tr>
+              <th>Źródło</th>
+              <th>Kwota (<span class="currency-symbol">zł</span>)</th>
+              <th>Data</th>
+              <th>Cykliczne</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="addPrzychodRow()">Dodaj przychód</button>
+
+        <h3>Wydatki planowane</h3>
+        <table id="wydatki-planowane-table">
+          <thead>
+            <tr>
+              <th>Kategoria</th>
+              <th>Kwota planowana (<span class="currency-symbol">zł</span>)</th>
+              <th>Data</th>
+              <th>Cykliczne</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="addWydatekPlanowanyRow()">Dodaj kategorię</button>
+
+        <h3>Wydatki zrealizowane</h3>
+        <table id="wydatki-zrealizowane-table">
+          <thead>
+            <tr>
+              <th>Opis</th>
+              <th>Kategoria</th>
+              <th>Kwota (<span class="currency-symbol">zł</span>)</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="addWydatekZrealizowanyRow()">Dodaj wydatek</button>
+
+        <h3>Porównanie wydatków</h3>
+        <table id="analiza-wydatkow-table">
+          <thead>
+            <tr>
+              <th>Kategoria</th>
+              <th>Planowane (<span class="currency-symbol">zł</span>)</th>
+              <th>Zrealizowane (<span class="currency-symbol">zł</span>)</th>
+              <th>Różnica (<span class="currency-symbol">zł</span>)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Fundusz awaryjny -->
+      <div id="fundusz-awaryjny" class="hidden section">
+        <h2>Fundusz awaryjny</h2>
+        <p class="sekcja-opis">
+          To odłożone pieniądze na nieprzewidziane wydatki, takie jak awaria samochodu czy sprzętu domowego. Najczęściej rekomenduje się kwotę około 2000–3000 <span class="currency-symbol">zł</span>, która pozwoli Ci spokojnie przejść przez trudne sytuacje, bez potrzeby zaciągania kolejnych długów.<br />
+          Buduj ten fundusz we własnym tempie — może to potrwać kilka miesięcy i to zupełnie normalne.<br />
+          Każda zaoszczędzona złotówka to krok w stronę finansowego bezpieczeństwa — idź do przodu bez pośpiechu!
+        </p>
+
+        <label for="fundusz-cel">Kwota docelowa (<span class="currency-symbol">zł</span>):</label>
+        <input type="number" id="fundusz-cel" oninput="aktualizujPasekFundusz()" />
+
+        <label for="fundusz-obecnie">Kwota odłożona (<span class="currency-symbol">zł</span>):</label>
+        <input type="number" id="fundusz-obecnie" oninput="aktualizujPasekFundusz()" />
+
+        <div class="pasek-postepu" id="pasek-awaryjny">
+          <div class="postep"></div>
+        </div>
+      </div>
+
+      <!-- Plan spłaty długów -->
+      <div id="plan-splat" class="hidden section">
+        <h2>Plan spłaty długów</h2>
+        <p class="sekcja-opis">
+          Tu ułożysz plan spłacania swoich zobowiązań. Zacznij od tych najmniejszych i stopniowo przechodź do większych, korzystając z efektu śnieżnej kuli. Dzięki temu z każdym spłaconym długiem poczujesz się lżej.<br />
+          Każda spłacona złotówka to Twój mały sukces — świętuj je!
+        </p>
+
+        <table id="tabela-splat">
+          <thead>
+            <tr>
+              <th>Zobowiązanie</th>
+              <th>Kwota (<span class="currency-symbol">zł</span>)</th>
+              <th>Nadpłata (<span class="currency-symbol">zł</span>)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p>Łączna kwota do spłaty: <span id="suma-splat">0 <span class="currency-symbol">zł</span></span></p>
+      </div>
+
+      <!-- Poduszka bezpieczeństwa -->
+      <div id="poduszka" class="hidden section">
+        <h2>Poduszka bezpieczeństwa</h2>
+        <p class="sekcja-opis">
+          Gdy już uporasz się z długami, pomyśl o zabezpieczeniu pieniędzy na minimum 3 miesiące bez dochodu (idealnie 6). To środki, które pozwolą Ci spokojnie przetrwać trudne chwile, jak utrata pracy czy awarie.<br />
+          Nie inwestuj ich w ryzykowne rzeczy, trzymaj pod ręką.<br />
+          To Twój finansowy spokój — zasługujesz na to, by czuć się bezpiecznie.
+        </p>
+
+        <label for="poduszka-miesiace">Wybierz wariant:</label>
+        <select id="poduszka-miesiace" onchange="aktualizujPoduszke()">
+          <option value="3">3 miesiące</option>
+          <option value="6">6 miesięcy</option>
+          <option value="12">12 miesięcy</option>
+        </select>
+
+        <label for="poduszka-cel">Kwota docelowa (<span class="currency-symbol">zł</span>):</label>
+        <input type="number" id="poduszka-cel" readonly />
+
+        <label for="poduszka-obecnie">Kwota odłożona (<span class="currency-symbol">zł</span>):</label>
+        <input type="number" id="poduszka-obecnie" oninput="aktualizujPoduszke()" />
+
+        <div class="pasek-postepu" id="pasek-poduszka">
+          <div class="postep"></div>
+        </div>
+      </div>
+ <section id="cele-finansowe" class="hidden section">
+  <h2>Cele finansowe</h2>
+ <button id="dodajCelBtn" onclick="toggleForm()">➕ Dodaj nowy cel</button>
+
+<div id="formularz-celu" class="hidden" style="margin-top: 15px;">
+  <input type="text" id="cel-nazwa" placeholder="Nazwa celu" />
+  <input type="number" id="cel-kwota-obecna" placeholder="Kwota obecna" />
+  <input type="number" id="cel-kwota-docelowa" placeholder="Kwota docelowa" />
+  <input type="date" id="cel-termin" />
+  <select id="cel-priorytet">
+    <option value="wysoki">Wysoki priorytet</option>
+    <option value="sredni">Średni priorytet</option>
+    <option value="niski">Niski priorytet</option>
+  </select>
+  <button onclick="dodajCel()">💾 Zapisz cel</button>
+  <button id="zapiszZmianyBtn" onclick="zapiszZmianyCelu()" class="hidden">Zapisz zmiany</button>
+
+</div>
+
+  <table id="celeTable">
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Kwota</th>
+        <th>Termin</th>
+        <th>Postęp</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="priorytet-wysoki">
+        <td>Ślub syna</td>
+        <td>9 800 / 20 000 zł</td>
+        <td>18.11.2025</td>
+        <td>
+          <div class="pasek-postepu">
+            <div class="postep" style="width:49%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr class="priorytet-sredni">
+        <td>Opał na zimę</td>
+        <td>2 000 / 5 000 zł</td>
+        <td>listopad 2025</td>
+        <td>
+          <div class="pasek-postepu">
+            <div class="postep" style="width:40%"></div>
+          </div>
+        </td>
+      </tr>
+      <tr class="priorytet-niski">
+        <td>Wakacje marzeń</td>
+        <td>2 000 / 10 000 zł</td>
+        <td></td>
+        <td>
+          <div class="pasek-postepu">
+            <div class="postep" style="width:20%"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section id="notatki" class="hidden section">
+  <h2>Notatki i przemyślenia</h2>
+  <div id="lista-notatek"></div>
+
+  <div class="nowa-notatka">
+    <textarea id="nowa-notatka" rows="5" placeholder="Wpisz nową notatkę..."></textarea>
+    <button id="dodajNotatkeBtn">Dodaj notatkę</button>
+  </div>
+</section>
+
+    </div> <!-- .container -->
+  </div> <!-- .app-container -->
+
+  <!-- Skrypt -->
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(function (registration) {
+            console.log('Service Worker zarejestrowany z zakresem:', registration.scope);
+          })
+          .catch(function (error) {
+            console.log('Błąd rejestracji Service Workera:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
